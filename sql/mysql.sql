@@ -71,25 +71,32 @@ INSERT INTO `acl_nodes` (`id`, `cidr`, `type`, `list_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cdr` (
-  `id` int(11) NOT NULL auto_increment,
-  `username` varchar(255) DEFAULT NULL,
-  `caller_id_name` varchar(255) NOT NULL,
-  `caller_id_number` varchar(255) NOT NULL,
-  `destination_number` varchar(255) NOT NULL,
-  `context` varchar(255) NOT NULL,
-  `start_stamp` DATETIME NOT NULL,
-  `answer_stamp` DATETIME DEFAULT NULL,
-  `end_stamp` DATETIME NOT NULL,
-  `duration` int(10) UNSIGNED NOT NULL,
-  `billsec` int(10) UNSIGNED DEFAULT NULL,
-  `hangup_cause` varchar(255) NOT NULL,
-  `uuid` char(36) NOT NULL,
-  `accountcode` varchar(255) DEFAULT NULL,
-  `read_codec` varchar(255) DEFAULT NULL,
-  `write_codec` varchar(255) DEFAULT NULL,
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `uuid` (`uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(255) NULL DEFAULT NULL,
+	`caller_id_name` VARCHAR(255) NULL DEFAULT NULL,
+	`caller_id_number` VARCHAR(255) NULL DEFAULT NULL,
+	`destination_number` VARCHAR(255) NOT NULL,
+	`context` VARCHAR(255) NOT NULL,
+	`start_stamp` DATETIME NULL DEFAULT NULL,
+	`answer_stamp` DATETIME NULL DEFAULT NULL,
+	`end_stamp` DATETIME NULL DEFAULT NULL,
+	`duration` INT(10) UNSIGNED NOT NULL,
+	`billsec` INT(10) UNSIGNED NULL DEFAULT NULL,
+	`hangup_cause` VARCHAR(255) NOT NULL,
+	`uuid` CHAR(36) NOT NULL,
+	`accountcode` VARCHAR(255) NULL DEFAULT NULL,
+	`read_codec` VARCHAR(255) NULL DEFAULT NULL,
+	`write_codec` VARCHAR(255) NULL DEFAULT NULL,
+	`originator_uuid` VARCHAR(255) NULL DEFAULT NULL,
+	`is_aleg` INT(11) NULL DEFAULT NULL,
+	`endpoint_disposition` VARCHAR(255) NULL DEFAULT NULL,
+	`inbound_bytes` INT(11) NULL DEFAULT NULL,
+	`outbound_bytes` INT(11) NULL DEFAULT NULL,
+	`sip_user_agent` VARCHAR(50) NULL DEFAULT NULL,
+	`last_bridge_role` VARCHAR(50) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `uuid` (`uuid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf;
 
 --
 -- Table structure for table `conference_advertise`
